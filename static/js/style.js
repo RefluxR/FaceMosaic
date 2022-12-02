@@ -20,6 +20,8 @@ function loadFile(input) {
     //이미지를 image-show div에 추가
     var container = document.getElementById('image-show');
     container.appendChild(newImage);
-    
 
   };
+button1.oninput = function(){
+  result.innerHTML = input.value; 
+}

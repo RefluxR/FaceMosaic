@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Face Mosaic Site</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/style.js"></script>
     
 </head>
 <body>
@@ -14,19 +15,21 @@
         <p>Select and send the picture you want to change to a picture</p>
     </div>
     <div class="button" onmouseenter="">
-        <p style="text-align: center;">Upload a picture and click Submit</p>
+        <p style="text-align: center;">Upload a picture and click change</p>
+        <br>
         <form class = "upload" action = "/img" method = "POST" enctype = "multipart/form-data">
             <label class="input-file-button" for="button1" onmouseenter="buttonMove(this)">UPLOAD</label>
-            <input id = "button1" type="file" name = "file" />
-            <input id = "button2" type="submit" onmouseenter="buttonMove(this)"/>
+            <input id = "button1" type="file" name = "file"/>
+            <input id = "button2" type="submit" onmouseenter="buttonMove(this)" value="change"/>
         </form>
     </div>
-    <div class = "img">
-        <img class="" src="{{ path }}" width = "600" height = "auto" />
-        <img src="{{ face }}" width = "600" height = "auto" />
+    
+    <div class = "imgBox">
+        <img class="img1" src="{{ path }}" width = "600" height = "auto" />
+        <img class="img2" src="{{ face }}" width = "600" height = "auto" />
     </div>
     <script>
-        function buttonMove(this){
+        function buttonMove(this){ 
             this.style.color = black;  
         }
     </script>

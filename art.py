@@ -1,6 +1,7 @@
+import os
 
 import cv2
-import os
+
 
 class IMAGE :
         def image_to_paint(img):
@@ -16,9 +17,6 @@ class IMAGE :
                 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
                 faces = face_cascade.detectMultiScale(gray, 1.2)
-
-                for (x,y,w,h) in faces:
-                        cv2.rectangle(img, (x,y), (x+w, y+h), (255,0,0), 2)
 
                 # 모자이크
                 for (x,y,w,h) in faces:

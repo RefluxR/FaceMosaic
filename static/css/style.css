@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Source+Sans+Pro:wght@300&display=swap');
 body{
     margin: 0;
     bottom: 0;
     background-color: black;
     color: #ffffff;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 .text{
     text-align: center;
@@ -29,13 +31,16 @@ body{
 .input-file-button{
     width: 100%;
     padding: 10px 30px;
-    background-color:#FF6600;
+    background-color:royalblue;
     border-radius: 4px;
     color: white;
     cursor: pointer;
     font-size: 20px;
 }
-.img{
+.imgBox{
     display: flex;
     justify-content: space-around;
+    border-style: solid;
+    border-color: white;
+    padding: 20px;
 }
