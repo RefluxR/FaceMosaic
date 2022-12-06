@@ -22,6 +22,7 @@ function loadFile(input) {
     container.appendChild(newImage);
 
   };
-button1.oninput = function(){
-  result.innerHTML = input.value; 
+  function onInput(){ 
+    document.getElementById("button2").style.color = "yellow";
+    document.getElementById("button2").style.border = "5px solid #435165";
 }

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Source+Sans+Pro:wght@300&display=swap');
 body{
+    font-size: 19px;
     margin: 0;
     bottom: 0;
     background-color: black;
@@ -38,14 +39,17 @@ body{
     cursor: pointer;
     font-size: 20px;
 }
-.imgBox{
+.imgBox {
     display: flex;
     justify-content: space-around;
-    /* border-style: solid; */
-    /* border-color: white; */
-    padding: 20px;
 }
 .imgBox > img {
     border: 1px solid white;
     border-radius: 5px;
+}
+footer {
+    text-align: center;
+    top:580px;
+    position: relative;
+    font-size: 13px;
 }
