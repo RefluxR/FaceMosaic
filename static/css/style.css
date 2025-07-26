@@ -1,118 +1,282 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Source+Sans+Pro:wght@300&display=swap');
-body{
-    font-size: 19px;
-    margin: 0;
-    bottom: 0;
-    background-color: black;
-    color: #ffffff;
-    font-family: 'Source Sans Pro', sans-serif;
-}
-.text{
-    text-align: center;
-    margin-bottom: -60px;
-}
-.button {
-    margin: 100px auto;
-    margin-bottom: 30px;
-    text-align: center;
-    width: 190px;
+/* 전체 기본 세팅 */
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: #0a0a0a; /* 아주 짙은 검정 */
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  /* 배경에 은은한 패턴 넣기 (반투명 그리드) */
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
 }
 
-#button1 {
-    width: 100%;
-    display: none;
-}
-#button2 {
-    width: 100%;
-    background-color: #435165;
-    border: 1px solid #435165;
-    margin-top: 20px;
-    color: white;
-    font-size: 16px;
-}
-#strength{
-    margin-bottom: 30px;
-}
-.input-file-button{
-    width: 100%;
-    padding: 10px 30px;
-    background-color:royalblue;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    font-size: 20px;
-}
-.imgBox {
-    display: flex;
-    justify-content: center; /* 중앙 정렬 */
-    align-items: center; /* 수직 중앙 정렬 */
-    margin-top: 20px;
-    padding: 0; /* 여백 제거 */
-}
-.imgBox > img {
-    max-width: 45%; /* 동일한 크기로 설정 */
-    height: auto;
-    border: 1px solid white;
-    border-radius: 5px;
-    object-fit: contain; /* 이미지 비율 유지 */
-}
-.imgBox canvas {
-    border: 1px solid white;
-    border-radius: 5px;
-    max-width: 100%;
-    height: auto;
-}
-footer {
-    text-align: center;
-    top:580px;
-    position: relative;
-    font-size: 13px;
-}
+/* 컨테이너 */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px 0;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+/* 헤더 */
 header h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+  font-family: 'Abril Fatface', cursive;
+  font-size: 2.8rem;
+  margin-bottom: 6px;
+  letter-spacing: 3px;
+  color: #fafafa;
+  text-shadow:
+    0 0 8px rgba(255,255,255,0.4),
+    0 0 20px rgba(255,255,255,0.2);
 }
 
 header p {
-    font-size: 1rem;
-    color: #cccccc;
-    margin-bottom: 20px;
+  font-size: 1rem;
+  color: #b0b0b0;
+  margin-bottom: 24px;
+  font-weight: 300;
+  letter-spacing: 0.03em;
 }
 
+/* 컨트롤 박스 */
 .controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
-#outputCanvas {
-    border: 1px solid white;
-    border-radius: 5px;
-    max-width: 100%;
-    height: auto;
-    margin-top: 20px;
+.input-file-button {
+  background-color: #222;
+  padding: 14px 0;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #eee;
+  cursor: pointer;
+  user-select: none;
+  border: 2px solid #444;
+  box-shadow:
+    inset 0 0 8px rgba(255,255,255,0.1),
+    0 3px 6px rgba(0,0,0,0.7);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
-.image-wrapper {
-    display: flex;
-    justify-content: center; /* 중앙 정렬 */
-    align-items: center; /* 수직 중앙 정렬 */
-    gap: 20px; /* 이미지 간격 */
-    max-width: 90%; /* 화면 비율에 맞게 조정 */
-    margin: 0 auto; /* 화면 중앙에 배치 */
+
+.input-file-button:hover {
+  background-color: #111;
+  border-color: #888;
+  box-shadow:
+    inset 0 0 12px rgba(255,255,255,0.2),
+    0 6px 12px rgba(0,0,0,0.8);
 }
-.image-wrapper > div > img {
-    max-width: 45%; /* 동일한 크기로 설정 */
-    height: auto;
-    border: 1px solid white;
-    border-radius: 5px;
-    object-fit: contain; /* 이미지 비율 유지 */
+
+#button1 {
+  display: none;
+}
+
+#strength {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 8px;
+  border-radius: 6px;
+  background: #222;
+  outline: none;
+  cursor: pointer;
+  box-shadow: inset 0 0 6px rgba(255,255,255,0.1);
+  transition: background 0.3s ease;
+}
+
+#strength::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+  box-shadow:
+    0 0 6px rgba(255,255,255,0.6),
+    inset 0 0 2px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+
+#strength::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+  box-shadow:
+    0 0 6px rgba(255,255,255,0.6),
+    inset 0 0 2px rgba(0,0,0,0.3);
+}
+
+/* 강도 값 표시 */
+#strengthValue {
+  font-weight: 700;
+  color: #bbb;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+/* 변경 버튼 */
+#button2 {
+  background-color: #444;
+  border: 2px solid #666;
+  border-radius: 14px;
+  padding: 14px 0;
+  color: #eee;
+  font-weight: 700;
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.9),
+    inset 0 0 10px rgba(255,255,255,0.1);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#button2:hover {
+  background-color: #555;
+  border-color: #aaa;
+  box-shadow:
+    0 6px 12px rgba(0,0,0,1),
+    inset 0 0 14px rgba(255,255,255,0.2);
+}
+
+/* 저장 버튼 */
+#saveButton {
+  background-color: #444;
+  border: 2px solid #ffcc00;
+  border-radius: 10px;
+  padding: 10px 22px;
+  font-size: 1.15rem;
+  color: #ffcc00;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow:
+    0 4px 8px rgba(255,204,0,0.6);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  align-self: center;
+  margin-top: 10px;
+}
+
+#saveButton:hover {
+  background-color: #ffcc00;
+  color: #222;
+}
+
+/* 파일 이름 표시 */
+#fileName {
+  font-size: 1rem;
+  color: #888;
+  min-height: 1.5rem;
+  letter-spacing: 0.02em;
+  font-style: italic;
+}
+
+/* 이미지 박스 */
+.imgBox {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap; /* PC: 수평 */
+}
+
+.imgBox img {
+  width: 48%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.8);
+  object-fit: contain;
+  background: #111;
+  border: 2px solid #333;
+}
+
+#mosaicImage {
+  visibility: hidden;  /* 안 보이지만 자리 유지 */
+  opacity: 0;
+  width: 48%;          /* 원래 크기 유지 */
+  height: auto;
+  border-radius: 14px;
+  border: 2px solid #333;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+  background: #111;
+  object-fit: contain;
+  transition: opacity 0.3s ease;
+}
+
+/* 푸터 */
+footer {
+  font-size: 0.75rem;
+  color: #666;
+  padding: 14px 0;
+  user-select: none;
+  letter-spacing: 0.05em;
+}
+
+
+/* 반응형 - 모바일(768px 이하) */
+@media (max-width: 768px) {
+  .imgBox {
+    flex-direction: column; /* 수직 정렬 */
+    gap: 20px;
+  }
+
+  .imgBox img {
+    width: 100%; /* 꽉 채우기 */
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  #button2, .input-file-button, #saveButton {
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+}
+
+.easter-egg {
+  display: none;
+  margin-top: 10px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #f5f5f5, #e0e0e0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.easter-egg p {
+  margin: 6px 0;
+}
+
+.signature {
+  text-align: right;
+  font-style: italic;
+  margin-top: 12px;
+  color: #555;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

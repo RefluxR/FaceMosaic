@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Face Mosaic Site</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css" />
     <script src="/static/js/style.js" defer></script>
 </head>
 <body>
@@ -19,15 +19,17 @@
                 <label class="input-file-button" for="button1">LOAD</label>
                 <input id="button1" type="file" accept="image/*" onchange="loadFile(this)" />
                 
-                <!-- 파일 이름을 표시할 요소 추가 -->
                 <p id="fileName">No file selected</p>
 
                 <label for="strength">Mosaic Strength</label>
                 <input type="range" id="strength" name="strength" min="0" max="10" value="5" oninput="updateStrengthValue()" />
-                <p>Current Value: <span id="strengthValue">5</span></p>
+                <p>Current Value: <span id="strengthValue">50%</span></p>
 
                 <button id="button2" onclick="applyMosaic()">CHANGE</button>
+                <button id="saveButton" onclick="saveMosaicImage()" style="display:none; margin-top:10px;">SAVE IMAGE</button>
+                <p id="saveMessage" style="color: #ffcc00; margin-top: 8px;"></p>
             </div>
+
             <div class="imgBox">
                 <span class="image-wrapper">
                     <div id="image-show"></div> <!-- 원본 이미지 표시 -->
@@ -36,7 +38,23 @@
             </div>
         </main>
         <footer>
-            <p>Semyung Computer High School Artificial Intelligence Software Department 2nd grade class 7 Park Sang-yeon</p>
+            <p id = 'easterEggs'>Semyung Computer High School Artificial Intelligence Software Department 2nd grade class 7 Park Sang-yeon</p>
+            <div id="easterEggsContent" class="easter-egg">
+                <p>Originally crafted in <strong>2022</strong> for fun,</p>
+                <p>Revisited in <strong>2025</strong> from the barracks, with renewed passion.</p>
+                <p>Still learning, still striving — the journey continues.</p>
+                <p class="signature">— Park Sang-yeon, Aspiring Developer in the Military</p>
+            </div>
+            <script>
+                document.getElementById('easterEggs').addEventListener('click', function () {
+                    const content = document.getElementById('easterEggsContent');
+                        if (content.style.display === 'none' || content.style.display === '') {
+                            content.style.display = 'block';
+                        } else {
+                            content.style.display = 'none';
+                        }
+                    });
+            </script>
         </footer>
     </div>
 </body>

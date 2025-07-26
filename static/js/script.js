@@ -1,46 +1,41 @@
-let uploadedFile = null;
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    const imageWrapper = document.querySelector(".image-wrapper");
 
-function loadImage(event) {
-    const file = event.target.files[0];
-    if (!file) {
-        alert("No file selected.");
-        return;
-    }
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault(); // 폼 제출 기본 동작 막기
 
-    uploadedFile = file;
+        const fileInput = document.querySelector("input[type='file']");
+        const file = fileInput.files[0];
 
-    const img = document.getElementById('originalImage');
-    img.src = URL.createObjectURL(file);
-    img.onload = () => {
-        alert("Image loaded successfully.");
-    };
-}
-
-async function applyMosaic() {
-    if (!uploadedFile) {
-        alert("Please load an image first.");
-        return;
-    }
-
-    const strength = document.getElementById('strength').value;
-    const formData = new FormData();
-    formData.append('file', uploadedFile);
-    formData.append('strength', strength);
-
-    try {
-        const response = await fetch('/mosaic', {
-            method: 'POST',
-            body: formData,
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to process the image.');
+        if (!file) {
+            alert("파일을 선택해주세요!");
+            return;
         }
 
-        const blob = await response.blob();
-        const mosaicImg = document.getElementById('mosaicImage');
-        mosaicImg.src = URL.createObjectURL(blob);
-    } catch (error) {
-        alert(error.message);
-    }
-}
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+            const response = await fetch("/upload", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error("서버 응답 실패");
+            }
+
+            const data = await response.json();
+
+            // 이미지 추가
+            imageWrapper.innerHTML = `
+                <img src="${data.original}" alt="원본 이미지">
+                <img src="${data.processed}" alt="처리된 이미지">
+            `;
+        } catch (error) {
+            console.error("에러 발생:", error);
+            alert("이미지 업로드 중 문제가 발생했습니다!");
+        }
+    });
+});

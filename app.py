@@ -16,7 +16,7 @@ def mosaic_image():
     if not file:
         return "No file uploaded.", 400
 
-    strength = int(request.form.get('strength', 15))
+    strength = int(request.form.get('strength', 10))
 
     # 파일을 메모리에서 읽어 OpenCV로 처리
     file_bytes = np.frombuffer(file.read(), np.uint8)
@@ -33,4 +33,3 @@ def mosaic_image():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
