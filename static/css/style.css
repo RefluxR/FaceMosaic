@@ -30,6 +30,9 @@ body{
     color: white;
     font-size: 16px;
 }
+#strength{
+    margin-bottom: 30px;
+}
 .input-file-button{
     width: 100%;
     padding: 10px 30px;
@@ -41,15 +44,75 @@ body{
 }
 .imgBox {
     display: flex;
-    justify-content: space-around;
+    justify-content: center; /* 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    margin-top: 20px;
+    padding: 0; /* 여백 제거 */
 }
 .imgBox > img {
+    max-width: 45%; /* 동일한 크기로 설정 */
+    height: auto;
     border: 1px solid white;
     border-radius: 5px;
+    object-fit: contain; /* 이미지 비율 유지 */
+}
+.imgBox canvas {
+    border: 1px solid white;
+    border-radius: 5px;
+    max-width: 100%;
+    height: auto;
 }
 footer {
     text-align: center;
     top:580px;
     position: relative;
     font-size: 13px;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1rem;
+    color: #cccccc;
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+#outputCanvas {
+    border: 1px solid white;
+    border-radius: 5px;
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+.image-wrapper {
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    gap: 20px; /* 이미지 간격 */
+    max-width: 90%; /* 화면 비율에 맞게 조정 */
+    margin: 0 auto; /* 화면 중앙에 배치 */
+}
+.image-wrapper > div > img {
+    max-width: 45%; /* 동일한 크기로 설정 */
+    height: auto;
+    border: 1px solid white;
+    border-radius: 5px;
+    object-fit: contain; /* 이미지 비율 유지 */
 }

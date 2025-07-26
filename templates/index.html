@@ -6,30 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Face Mosaic Site</title>
     <link rel="stylesheet" href="/static/css/style.css">
-    <script src="/static/js/style.js"></script>
-    
+    <script src="/static/js/style.js" defer></script>
 </head>
 <body>
-    <div class="text">
-        <h2>Face Mosaic Site</h2>
-        <p>Select and send the picture you want to change to a picture</p>
-    </div>
-    <div class="button" onmouseenter="">
-        <p style="text-align: center;">Upload a picture and click change</p>
-        <br>
-        <form class = "upload" action = "/img" method = "POST" enctype = "multipart/form-data">
-            <label class="input-file-button" for="button1" onchange="onInput()">UPLOAD</label>
-            <input id = "button1" type="file" name = "file" onchange="onInput()"/>
-            <input id = "button2" type="submit" value="change"/>
-        </form>
-    </div>
-    
-    <div class = "imgBox">
-        <img class="img1" src="{{ path }}" width = "600" height = "auto" />
-        <img class="img2" src="{{ face }}" width = "600" height = "auto" />
+    <div class="container">
+        <header>
+            <h1>Face Mosaic Site</h1>
+            <p>Upload a picture and apply mosaic to detected faces.</p>
+        </header>
+        <main>
+            <div class="controls">
+                <label class="input-file-button" for="button1">LOAD</label>
+                <input id="button1" type="file" accept="image/*" onchange="loadFile(this)" />
+                
+                <!-- 파일 이름을 표시할 요소 추가 -->
+                <p id="fileName">No file selected</p>
+
+                <label for="strength">Mosaic Strength</label>
+                <input type="range" id="strength" name="strength" min="0" max="10" value="5" oninput="updateStrengthValue()" />
+                <p>Current Value: <span id="strengthValue">5</span></p>
+
+                <button id="button2" onclick="applyMosaic()">CHANGE</button>
+            </div>
+            <div class="imgBox">
+                <span class="image-wrapper">
+                    <div id="image-show"></div> <!-- 원본 이미지 표시 -->
+                    <img id="mosaicImage" alt="Mosaic Image" /> <!-- 모자이크 이미지 표시 -->
+                </span>
+            </div>
+        </main>
+        <footer>
+            <p>Semyung Computer High School Artificial Intelligence Software Department 2nd grade class 7 Park Sang-yeon</p>
+        </footer>
     </div>
 </body>
-<footer>
-    <p>Semyung Computer High School Artificial Intelligence Software Department 2nd grade class 7 Park Sang-yeon</p>
-</footer>
 </html>
